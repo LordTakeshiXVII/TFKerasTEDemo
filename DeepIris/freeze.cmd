@@ -1,0 +1,1 @@
+python C:\_data\python-envs\tf19\Lib\site-packages\tensorflow\python\tools\freeze_graph.py --input_meta_graph=.\model\keras_model.ckpt.meta --input_checkpoint=.\model\keras_model.ckpt --output_graph=.\model\keras_frozen.pb --output_node_names="output_layer/Softmax" --input_binary=true

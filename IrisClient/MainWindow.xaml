@@ -1,0 +1,73 @@
+﻿<Window x:Class="IrisClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IrisClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="TextBox" >
+            <Setter Property="Width" Value="77" />
+            <Setter Property="HorizontalContentAlignment" Value="Right" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        <Style TargetType="Button" >
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        <Style TargetType="TextBlock" >
+            <Setter Property="TextAlignment" Value="Right" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Label" >
+            <Setter Property="HorizontalContentAlignment" Value="Right" />
+        </Style>
+    </Window.Resources>
+    <Border Margin="8" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.LayoutTransform>
+                    <ScaleTransform CenterX="0" CenterY="0" ScaleX="{Binding ElementName=uiScaleSlider,Path=Value}" ScaleY="{Binding ElementName=uiScaleSlider,Path=Value}" />
+                </Grid.LayoutTransform>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Content="Sepal Length/Width" />
+                <TextBox Grid.Column="1" Text="{Binding Features.SepalLength}" />
+                <TextBox Grid.Column="2" Text="{Binding Features.SepalWidth}" />
+                <Label Grid.Row="1" Content="Petal Length/Width" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Features.PetalLength}" />
+                <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Features.PetalWidth}" />
+                <StackPanel Grid.RowSpan="2" Grid.Column="3" Orientation="Horizontal">
+                    <Button Content="Predict" Click="Predict" Background="#FF6D9DC7"/>
+                    <Button Content="Sample Setosa" Click="SampleSetosa" />
+                    <Button Content="Sample Versicolor" Click="SampleVersicolor" />
+                    <Button Content="Sample Virginica" Click="SampleVirginica" />
+                </StackPanel>
+                <Label Grid.Row="2" Content="Is Setosa" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Prediction.IsSetosa, StringFormat=N5}" IsReadOnly="True" />
+                <Label Grid.Row="3" Content="Is Versicolor" />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Prediction.IsVersicolor, StringFormat=N5}" IsReadOnly="True" />
+                <Label Grid.Row="4" Content="Is Virginica" />
+                <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Prediction.IsVirginica, StringFormat=N5}" IsReadOnly="True" />
+            </Grid>
+
+            <Slider  Grid.Row="1" x:Name="uiScaleSlider" Value="1.0" Minimum="0.5" Maximum="4.0" />
+
+        </Grid>
+    </Border>
+</Window>

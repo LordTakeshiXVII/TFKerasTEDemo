@@ -22,7 +22,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DeepIrisV2.py" />
     <Compile Include="DeepIris.py" />
     <Compile Include="Predict.py">
       <SubType>Code</SubType>
